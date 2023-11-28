@@ -32,26 +32,28 @@ jobs:
 
       - name: refresh
         run: |
+          git clone https://fatjyc:${{secrets.GH_TOKEN}}@github.com/${GITHUB_REPOSITORY}.git repo
+          cd repo
           env
           touch index.js
           echo 'console.log("hello")' > index.js
           node index.js
           git config --global user.email "you@example.com"
           git config --global user.name "Your Name"
-          # git add .
-          # git commit -m 'abc'
+          git add .
+          git commit -m 'abc'
           # git remote set-url origin https://fatjyc:${{secrets.GH_TOKEN}}@github.com/${GITHUB_REPOSITORY}.git
-          # git remote -v
-          # git push origin ${GITHUB_REF_NAME}
+          git remote -v
+          git push origin ${GITHUB_REF_NAME}
       
-      - name: push
-        uses: github-actions-x/commit@v2.9
-        with:
-          github_actor: fatjyc
-          github-token: ${{ secrets.GH_TOKEN }}
-          push-branch: 'main'
-          commit-message: '123'
-          force-add: 'true'
-          files: index.js
-          name: robot
-          email: robot@babel.cloud
+      # - name: push
+      #   uses: github-actions-x/commit@v2.9
+      #   with:
+      #     github_actor: fatjyc
+      #     github-token: ${{ secrets.GH_TOKEN }}
+      #     push-branch: 'main'
+      #     commit-message: '123'
+      #     force-add: 'true'
+      #     files: index.js
+      #     name: robot
+      #     email: robot@babel.cloud
