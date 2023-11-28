@@ -42,7 +42,7 @@ jobs:
           git commit -m 'abc'
           git remote set-url origin https://fatjyc:${{secrets.GH_TOKEN}}@github.com/${GITHUB_REPOSITORY}.git
           git remote -v
-          git push origin main
+          git push origin ${GITHUB_REF_NAME}
       
       # - name: push
       #   uses: github-actions-x/commit@v2.9
