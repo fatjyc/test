@@ -33,7 +33,7 @@ jobs:
       - name: refresh
         run: |
           touch index.js
-          cat 'console.log("hello")' > index.js
+          echo 'console.log("hello")' > index.js
           git config user.name = 'robot'
           git config user.email = 'robot@email'
           git add .
