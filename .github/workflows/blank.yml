@@ -32,17 +32,22 @@ jobs:
 
       - name: refresh
         run: |
+          env
           touch index.js
           echo 'console.log("hello")' > index.js
           node index.js
+          git add .
+          git commit -m 'abc'
+          git remote set-url origin https://fatjyc@${secrets.GH_TOKEN}@github.com/fatjyc/test.git
+          git push origin main
       
-      - name: push
-        uses: github-actions-x/commit@v2.9
-        with:
-          github-token: ${{ secrets.GH_TOKEN }}
-          push-branch: 'main'
-          commit-message: '123'
-          force-add: 'true'
-          files: index.js
-          name: robot
-          email: robot@babel.cloud
+      # - name: push
+      #   uses: github-actions-x/commit@v2.9
+      #   with:
+      #     github-token: ${{ secrets.GH_TOKEN }}
+      #     push-branch: 'main'
+      #     commit-message: '123'
+      #     force-add: 'true'
+      #     files: index.js
+      #     name: robot
+      #     email: robot@babel.cloud
