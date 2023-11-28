@@ -40,7 +40,7 @@ jobs:
           git config --global user.name "Your Name"
           git add .
           git commit -m 'abc'
-          git remote set-url origin https://fatjyc@${{secrets.GH_TOKEN}}@github.com/${GITHUB_REPOSITORY}.git
+          git remote set-url origin https://fatjyc:${{secrets.GH_TOKEN}}@github.com/${GITHUB_REPOSITORY}.git
           git push origin main
       
       # - name: push
